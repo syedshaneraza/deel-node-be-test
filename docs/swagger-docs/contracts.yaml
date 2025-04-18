@@ -1,0 +1,75 @@
+paths:
+  /contracts/{id}:
+    get:
+      summary: Get a specific contract by ID (only if you are a client or contractor on it)
+      tags:
+        - Contracts
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID of the contract
+      responses:
+        200:
+          description: The contract details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 5
+                  terms:
+                    type: string
+                    example: "Build backend API"
+                  status:
+                    type: string
+                    enum: [new, in_progress, terminated]
+                    example: in_progress
+                  ClientId:
+                    type: integer
+                    example: 1
+                  ContractorId:
+                    type: integer
+                    example: 2
+        404:
+          description: Contract not found or not accessible by this profile
+        500:
+          description: Server error
+
+  /contracts:
+    get:
+      summary: Get all active contracts for a profile (client or contractor)
+      tags:
+        - Contracts
+      responses:
+        200:
+          description: List of non-terminated contracts for current profile
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 3
+                    terms:
+                      type: string
+                      example: "Design marketing website"
+                    status:
+                      type: string
+                      enum: [new, in_progress, terminated]
+                      example: new
+                    ClientId:
+                      type: integer
+                      example: 8
+                    ContractorId:
+                      type: integer
+                      example: 4
+        500:
+          description: Server error

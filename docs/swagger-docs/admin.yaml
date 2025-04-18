@@ -1,0 +1,87 @@
+paths:
+  /admin/best-profession:
+    get:
+      summary: Get the profession that earned the most money
+      tags:
+        - Admin
+      parameters:
+        - in: query
+          name: start
+          schema:
+            type: string
+            format: date
+          required: false
+          description: Start date for filtering jobs (inclusive)
+        - in: query
+          name: end
+          schema:
+            type: string
+            format: date
+          required: false
+          description: End date for filtering jobs (inclusive)
+      responses:
+        200:
+          description: Returns the profession with the highest earnings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profession:
+                    type: string
+                    example: Software Engineer
+        500:
+          description: Server error
+
+  /admin/best-clients:
+    get:
+      summary: Get the top clients who paid the most
+      tags:
+        - Admin
+      parameters:
+        - in: query
+          name: start
+          schema:
+            type: string
+            format: date
+          required: false
+          description: Start date for filtering jobs (inclusive)
+        - in: query
+          name: end
+          schema:
+            type: string
+            format: date
+          required: false
+          description: End date for filtering jobs (inclusive)
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 2
+          required: false
+          description: Max number of top clients to return
+      responses:
+        200:
+          description: List of top-paying clients
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clients:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 12
+                        fullName:
+                          type: string
+                          example: "Jane Doe"
+                        paid:
+                          type: number
+                          format: float
+                          example: 3000.50
+        500:
+          description: Server error

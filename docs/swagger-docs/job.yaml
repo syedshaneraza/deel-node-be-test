@@ -1,0 +1,63 @@
+paths:
+  /jobs/unpaid:
+    get:
+      summary: Get unpaid jobs
+      description: Returns a list of unpaid jobs for the authenticated user (Client or Contractor).
+      tags:
+        - Jobs
+      parameters:
+        - name: profile_id
+          in: header
+          required: true
+          schema:
+            type: integer
+          description: Profile ID of the authenticated user
+      responses:
+        200:
+          description: List of unpaid jobs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Job"
+        401:
+          description: Unauthorized - profile not found
+        500:
+          description: Internal server error
+
+  /jobs/{job_id}/pay:
+    post:
+      summary: Pay for a job
+      description: Allows a client to pay for a job if the job is unpaid and the client has sufficient balance.
+      tags:
+        - Jobs
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the job to be paid
+        - name: profile_id
+          in: header
+          required: true
+          schema:
+            type: integer
+          description: Profile ID of the client making the payment
+      responses:
+        200:
+          description: Payment successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        400:
+          description: Bad request - insufficient funds or job not found
+        500:
+          description: Internal server error
