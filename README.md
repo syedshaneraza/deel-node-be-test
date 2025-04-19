@@ -99,11 +99,11 @@ Thank you and good luck! 🙏
 
 
 ## Possible Improvements
-> We can make use of validators like "Joi" or "express-validator" for input validation.
-> We can make use of logger to log the paths, errors and queries.
-> We can create a custom error class (e.g., AppError) to handle 400, 403, 404, etc.
-> We can Centralize error handling with a middleware (errorHandler.js) to avoid repeating try/catch everywhere.
-> We can make use of helmet middleware to set secure HTTP headers.
-> We can sanitize user input to prevent SQL Injection and XSS.
-> We can add rate limiting with express-rate-limit.
-> We can also add an npm run lint script and use ESLint + Prettier for formatting.
+1. We can make use of validators like "Joi" or "express-validator" for input validation.
+2. We can make use of logger to log the paths, errors and queries.
+3. We can create a custom error class (e.g., AppError) to handle 400, 403, 404, etc.
+4. We can Centralize error handling with a middleware (errorHandler.js) to avoid repeating try/catch everywhere.
+5. We can make use of helmet middleware to set secure HTTP headers.
+6. We can sanitize user input to prevent SQL Injection and XSS.
+7. We can add rate limiting with express-rate-limit.
+8. We can also add an npm run lint script and use ESLint + Prettier for formatting.
