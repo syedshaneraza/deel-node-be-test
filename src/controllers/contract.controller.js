@@ -16,7 +16,6 @@ const getContractById = async (req, res) => {
     }
     return res.status(HttpStatus.OK).json(contract);
   } catch (error) {
-    console.log("Error fetching contract by ID : ", error);
     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
       message: Messages.INTERNAL_ERROR,
     });
@@ -30,7 +29,6 @@ const getContractsForProfile = async (req, res) => {
 
     return res.status(HttpStatus.OK).json(contracts);
   } catch (error) {
-    console.log("Error fetching contracts for profile : ", error);
     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
       message: Messages.INTERNAL_ERROR,
     });

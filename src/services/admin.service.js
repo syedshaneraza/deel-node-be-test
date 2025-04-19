@@ -4,7 +4,6 @@ const { Op } = require("sequelize");
 const findBestProfession = async ({ start, end }) => {
   const startDate = start ? new Date(start) : new Date("1900-01-01");
   const endDate = end ? new Date(end) : new Date();
-
   const jobs = await Job.findAll({
     where: {
       paid: true,
@@ -17,7 +16,6 @@ const findBestProfession = async ({ start, end }) => {
       ],
     },
   });
-
   const professionEarnings = {};
 
   for (const job of jobs) {

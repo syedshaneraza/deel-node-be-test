@@ -3,7 +3,6 @@ const { Profile, Job, Contract, sequelize } = require("../model");
 const { Op } = require("sequelize");
 
 const deposit = async (targetUserId, fromUserId, amount) => {
-  console.log("inside service function");
   if (targetUserId !== fromUserId) {
     throw new Error(Messages.USER_MISMATCH);
   }

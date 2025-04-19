@@ -12,7 +12,6 @@ const depositBalance = async (req, res) => {
       +bodyUserId,
       parseFloat(amount)
     );
-    console.log('result : ', result);
     return res.status(HttpStatus.OK).json(result);
   } catch (error) {
     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({

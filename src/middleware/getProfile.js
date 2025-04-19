@@ -8,7 +8,7 @@ const getProfile = async (req, res, next) => {
 
     if (!profileId) {
       return res.status(HttpStatus.UNAUTHORIZED).json({
-        message: Messages.MISSING_PROFILE_ID || "Profile ID header is missing",
+        message: Messages.MISSING_PROFILE_ID,
       });
     }
 
@@ -16,7 +16,7 @@ const getProfile = async (req, res, next) => {
 
     if (!profile) {
       return res.status(HttpStatus.UNAUTHORIZED).json({
-        message: Messages.UNAUTHORIZED_PROFILE || "Unauthorized profile",
+        message: Messages.UNAUTHORIZED_PROFILE,
       });
     }
 
@@ -26,7 +26,7 @@ const getProfile = async (req, res, next) => {
     console.log("Error in getProfile middleware:", error);
     return res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
-      .json({ message: Messages.INTERNAL_ERROR || "Internal server error" });
+      .json({ message: Messages.INTERNAL_ERROR});
   }
 };
 
