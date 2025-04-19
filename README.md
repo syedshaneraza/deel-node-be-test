@@ -94,3 +94,16 @@ For example, writing some unit tests or a simple frontend demonstrating calls to
 When you've finished the assignment, zip your repo (make sure to include the .git folder) and send us the zip file.
 
 Thank you and good luck! 🙏
+
+
+
+
+## Possible Improvements
+> We can make use of validators like "Joi" or "express-validator" for input validation.
+> We can make use of logger to log the paths, errors and queries.
+> We can create a custom error class (e.g., AppError) to handle 400, 403, 404, etc.
+> We can Centralize error handling with a middleware (errorHandler.js) to avoid repeating try/catch everywhere.
+> We can make use of helmet middleware to set secure HTTP headers.
+> We can sanitize user input to prevent SQL Injection and XSS.
+> We can add rate limiting with express-rate-limit.
+> We can also add an npm run lint script and use ESLint + Prettier for formatting.
